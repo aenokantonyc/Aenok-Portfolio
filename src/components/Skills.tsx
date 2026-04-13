@@ -24,11 +24,11 @@ const Skills = () => {
             </p>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="space-y-12">
             <ScrollReveal delay={0.1}>
               <div>
                 <h3 className="font-heading font-semibold text-lg mb-6 text-center">Technical</h3>
-                <div className="flex flex-wrap gap-2 justify-center">
+                <div className="flex flex-wrap gap-3 justify-center items-center">
                   {technicalSkills.map((skill) => (
                     <span key={skill} className="skill-badge">{skill}</span>
                   ))}
@@ -39,7 +39,7 @@ const Skills = () => {
             <ScrollReveal delay={0.2}>
               <div>
                 <h3 className="font-heading font-semibold text-lg mb-6 text-center">Professional</h3>
-                <div className="flex flex-wrap gap-2 justify-center">
+                <div className="flex flex-wrap gap-3 justify-center items-center">
                   {professionalSkills.map((skill) => (
                     <span key={skill} className="skill-badge">{skill}</span>
                   ))}

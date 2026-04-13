@@ -2,8 +2,8 @@ import ScrollReveal from './ScrollReveal';
 import { MapPin } from 'lucide-react';
 
 const stats = [
-  { value: '5+', label: 'Projects Built' },
-  { value: '5+', label: 'Certifications' },
+  { value: '6+', label: 'Projects' },
+  { value: '5+', label: 'Global Certificates' },
 ];
 
 const About = () => {
@@ -32,10 +32,10 @@ const About = () => {
 
           <ScrollReveal delay={0.15}>
             <p className="text-center text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto mb-4">
-              I am a Computer Science student passionate about building real-world applications and solving meaningful problems through technology. My focus lies in full stack development, where I design intuitive user interfaces, develop scalable backend systems, and ensure seamless integration across the entire application flow.
+              I build systems that solve real problems.
             </p>
             <p className="text-center text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto mb-12">
-              I enjoy working in team environments, taking initiative in leadership, and contributing to structured and efficient project execution. I am continuously learning and building to grow as a developer who can create impactful and reliable digital solutions.
+              Focused on full stack development, I create seamless applications by combining intuitive design with strong backend logic. I thrive in collaborative environments and continuously push myself to build better, smarter solutions.
             </p>
           </ScrollReveal>
 

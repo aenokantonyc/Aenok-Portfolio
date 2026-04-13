@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import emailjs from "@emailjs/browser";
+import { useRef, useState } from 'react';
 import { Mail, Linkedin, Github, Twitter, Send, Clock, Code2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -8,27 +9,39 @@ import ScrollReveal from './ScrollReveal';
 
 const socialLinks = [
   { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/aenok-antony/' },
-  { name: 'GitHub', icon: Github, href: 'https://github.com/Silveraxe69' },
+  { name: 'GitHub', icon: Github, href: 'https://github.com/aenokantonyc' },
   { name: 'Twitter', icon: Twitter, href: 'https://x.com/Aenokantonyc' },
-  { name: 'LeetCode', icon: Code2, href: 'https://leetcode.com/u/SILVERAXE69/' },
+  { name: 'LeetCode', icon: Code2, href: 'https://leetcode.com/u/aenokantonyc/' },
 ];
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const form = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!form.current) return;
+    
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    toast({ title: "Message sent!", description: "Thanks for reaching out. I'll get back to you soon!" });
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
-  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    emailjs.sendForm(
+      "service_nmm5mfu",
+      "template_jmz8wv8",
+      form.current,
+      "CAeeibJ99llsvDsE7"
+    )
+      .then(() => {
+        toast({ title: "Message sent!", description: "Thanks for reaching out. I'll get back to you soon!" });
+        form.current?.reset();
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast({ title: "Failed to send message", description: "Please try again or contact me directly via email." });
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -90,18 +103,18 @@ const Contact = () => {
 
             {/* Right - Form */}
             <ScrollReveal delay={0.3} direction="right">
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form ref={form} onSubmit={sendEmail} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="font-heading font-semibold mb-2 block">Your Name</label>
-                  <Input id="name" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required className="bg-secondary/50 border-border h-11" />
+                  <Input id="name" name="name" placeholder="Your Name" required className="bg-secondary/50 border-border h-11" />
                 </div>
                 <div>
                   <label htmlFor="email" className="font-heading font-semibold mb-2 block">Your Email Address</label>
-                  <Input id="email" name="email" type="email" placeholder="Your Email Address" value={formData.email} onChange={handleChange} required className="bg-secondary/50 border-border h-11" />
+                  <Input id="email" name="email" type="email" placeholder="Your Email Address" required className="bg-secondary/50 border-border h-11" />
                 </div>
                 <div>
                   <label htmlFor="message" className="font-heading font-semibold mb-2 block">What would you like to discuss?</label>
-                  <Textarea id="message" name="message" placeholder="Opportunity, collaboration, or technical discussion." value={formData.message} onChange={handleChange} required className="bg-secondary/50 border-border resize-none min-h-[120px]" />
+                  <Textarea id="message" name="message" placeholder="Opportunity, collaboration, or technical discussion." required className="bg-secondary/50 border-border resize-none min-h-[120px]" />
                 </div>
                 <Button type="submit" disabled={isSubmitting} className="w-full h-11 btn-accent font-semibold">
                   {isSubmitting ? 'Sending...' : (

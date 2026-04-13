@@ -7,7 +7,7 @@ import testimonialHarippriya from '@/assets/testimonial-harippriya.jpg';
 
 const testimonials = [
   {
-    quote: "Aenok demonstrates exceptional problem-solving abilities and a genuine passion for cloud technologies. His dedication to learning and growth is truly inspiring.",
+    quote: "Aenok demonstrates strong problem-solving skills with a passion for software development, UI design, and system architecture.",
     author: "Kiran Vincent C",
     role: "Director of Sales, MobFix Bangalore",
     image: testimonialKiran,
@@ -19,7 +19,7 @@ const testimonials = [
     image: testimonialHarippriya,
   },
   {
-    quote: "Aenok approaches complex problems with calm logic and practical thinking. His passion for cloud and system design clearly reflects in his work.",
+    quote: "Aenok blends logical thinking with creativity in software development, UI design, and system architecture.",
     author: "Varun Vincent C",
     role: "Close Friend & Engineering Peer",
     image: testimonialVarun,
